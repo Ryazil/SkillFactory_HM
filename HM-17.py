@@ -14,7 +14,7 @@ def sort(array):
                 equal.append(x)
             elif x > pivot:
                 greater.append(x)
-        return sort(less) + equal + sort(greater)  # Just use the + operator to join lists
+        return sort(less) + equal + sort(greater) 
     else:
         return array
 
