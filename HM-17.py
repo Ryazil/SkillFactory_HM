@@ -25,6 +25,8 @@ print(sort(input_numbers))
 def binary_search(array, element, left, right):
     if left > right:
         return False
+    elif array[right] < element:
+        return right
 
     middle = (right + left) // 2
     if array[middle] < element:
@@ -36,6 +38,17 @@ def binary_search(array, element, left, right):
         return binary_search(array, element, left, middle - 1)
 
 
-element = int(input("Введите одно число от 1 до 999: "))
+while True:
+    try:
+        element = int(input("Введите одно число от 1 до 999: "))
+        if element < 0 or element > 999:
+            raise Exception
+        break
+    except ValueError:
+        print("Нужно ввести число!")
+    except Exception:
+        print("Неправильный диапазон!")
+
+
 print("Номер позиции элемента, который меньше введенного пользователем числа, а следующий за ним больше или равен "
-      " = ", binary_search(sort(input_numbers), 100, 0, len(input_numbers)))
+      " = ", binary_search(sort(input_numbers), element, 0, len(input_numbers)-1))
